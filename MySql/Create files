@@ -1,0 +1,108 @@
+CREATE TABLE CUSTOMERS(
+						CustomerId number(10),
+						LastName varchar2(30) NOT NULL,
+						FirstName varchar2(30) NOT NULL,
+						DOB date,
+						Address varchar2(30),
+						City varchar2(30) NOT NULL,
+						Province varchar2(30) NOT NULL,
+						PostalCode varchar2(30) NOT NULL,
+						Email varchar2(30)
+						)
+/
+CREATE TABLE ORDERS(
+						OrderId number(10),
+						OrderDate date NOT NULL,
+						OrderTotal number(15) NOT NULL,
+						CustomerId number(10)
+					)
+/
+
+CREATE TABLE PAYMENT(
+						OrderId number(10),
+						CardNum number(10),
+						CardHolder varchar2(30) NOT NULL,
+						Expdae date NOT NULL,
+						Cardtype char(15) NOT NULL
+					)
+/
+CREATE TABLE CATEGORY(
+						CategoryId number(10),
+						CategoryDesc varchar2(30) NOT NULL UNIQUE
+					 )
+/
+
+CREATE TABLE LABEL (
+					LabelId number(10),
+					LabelName varchar2(30) NOT NULL UNIQUE,
+					URL varchar2(100) NOT NULL UNIQUE
+					)
+/
+
+CREATE TABLE REGION (
+					RegionId number(10),
+					ReionName varchar2(30) NOT NULL UNIQUE
+					)
+/
+
+CREATE TABLE SALES_REP (
+						LabelId number(10),
+						Rep# number(10),
+						LastName varchar2(30) NOT NULL,
+						FirstName varchar2(30) NOT NULL,
+						Phone# varchar2(30) NOT NULL UNIQUE,
+						Email varchar(30) UNIQUE,
+						RegionId number(10)
+						)
+/
+
+CREATE TABLE RECORDING(
+						RecordingId number(10),
+						Tile varchar2(30) NOT NULL,
+						Artist varchar2(30) NOT NULL,
+						SellPrice number(15,5) NOT NULL,
+						QtyInStock number(30),
+						CategoryId number(10),
+						LabelId number(10)
+						)
+/
+CREATE TABLE ORDER_LINE(
+						OrderId number(10),
+						Line# number(10),
+						Qty varchar2(30) CHECK(Qty >= 0),
+						ActPrice number(15,5) CHECK (ActPrice > 0),
+						RecordinId number(10)
+						)
+/
+CREATE TABLE RECORD_HIST(
+					RecordingId number(10),
+					Price# number(10),
+					Price number(15,5),
+					StartDate DATE
+					)
+/
+
+ALTER TABLE CUSTOMER (
+	ADD CONSTRAINT CUSTOMER_CustomerId_pk PRIMARY KEY(CustomerID)
+)
+/
+DROP TABLE PAYMENT
+/
+DROP TABLE ORDERS
+/
+DROP TABLE CUSTOMERS
+/
+DROP TABLE CATEGORY
+/
+DROP TABLE SALES_REP
+/						
+DROP TABLE LABEL
+/
+DROP TABLE RECORD_HIST
+/
+DROP TABLE RECORDING
+/
+DROP TABLE ORDER_LINE
+/
+DROP TABLE REGION
+/						
