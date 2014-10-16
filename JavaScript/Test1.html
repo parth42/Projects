@@ -1,0 +1,244 @@
+<!--
+**********************************
+Name: Parth Parikh
+Email Id= prparikh@outlook.com
+Cell# 416-666-5185
+Date: Oct 12, 2014
+
+Questionnaire 1= Standard Developement for HTML/Javascript
+
+General description of what your code does:
+	The purpose of the application is to allow end-users to quickly enter and manage a list of name/value pairs.
+Created an HTML application using a UI similar to the one shown below. The application code is written in HTML and JavaScript.
+	
+Functions used in form:
+	1) addNewItem = add the data from textbox to listbox
+	2) deleteItem = delete data from listbox
+	3) sortByListName = sorting by name
+	4) sortByListValue = sorting by value
+	5) showListXML = shows data in XML form in alert. 
+	
+	
+Anticipated bad results:
+	No bad results are anticipated since this program is not interactive and does not require other interaction
+
+***********************************
+-->
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+
+<!-- start CSS -->
+<style>
+/* CSS for the body tag */
+body
+{
+	width:1000px;
+	margin:auto;
+	font-family:"Times New Roman",serif;
+	background-color: lightblue;
+}
+/* CSS for main div */
+.mainDiv
+{
+	width:700px;
+	height:600px;
+	background-color: white;
+}
+
+/* CSS for textbox, listbox area and for button area */
+.nameValueClass
+{
+	margin-right:50px;
+}
+/* CSS for the listbox div tag */
+.listDiv
+{
+	border: 1px solid #a1a1a1;
+	width:350px;
+	height:300px;
+}
+/* CSS for the textbox */
+#nameValue
+{
+	width:350px;
+}
+/* CSS for the listbox */
+#nameValueList
+{
+	height:300px;
+	width:350px;
+}
+/* CSS for the h1 tag */
+h1
+{
+	margin-top:50px;
+	margin-left:50px;
+}
+/* CSS for the Section */
+section
+{
+	width:400px;
+	margin-left:50px;
+	//margin:auto;
+	position:relative;
+	float:left;
+}
+/* CSS for the aside tag */
+aside
+{
+	width:100px;
+	position:relative;
+	float:left;
+}
+</style>
+<!-- end of CSS-->
+
+<!-- start of JavaScript -->
+<script type="text/javascript">
+
+    var arrName = [];	// global variable for name
+	var arrValue = [];	// global variable for value
+	
+	//start of function addNewItem for add data to listbox.
+	function addNewItem() {
+		var textbox = document.getElementById('txtNameValue').value;
+		var letters = /^[0-9a-zA-Z=]+$/;
+		var valid = textbox.match(letters);
+		if(valid){
+			if(textbox != null && textbox != '') {	
+				if(textbox.indexOf('=') > -1) {
+					var NameValuePair = textbox.split('=');
+					arrName.push(NameValuePair[0]);
+					arrValue.push(NameValuePair[1]+'='+NameValuePair[0]);
+					var listbox = document.getElementById('lbAllValues');
+					var newOption = document.createElement('option');
+					newOption.value = textbox; // The value that this option will have
+					newOption.innerHTML = textbox; // The displayed text inside of the <option> tags
+					listbox.appendChild(newOption);
+					document.getElementById('txtNameValue').value = '';
+				} else {
+				alert('Please Enter Valid Name/Value Pair. Name/Value pair is like <name> = <pair>');
+			}
+		} 	else {
+				alert('Please enter Name/Value Pair.');
+			}
+		}
+		else{
+				alert("Only alphanumeric characters are allow");
+			}
+    }	//end of function
+	
+	//start of deleteItem function
+    function deleteItem() {
+        var listbox = document.getElementById('lbAllValues');
+        if (listbox.selectedIndex != -1) {
+            listbox.remove(listbox.selectedIndex);
+        }
+    }	//end of function
+	
+	//Below two function are for sorting
+	
+	//start of function sortByName 
+	function sortByListName() { 
+        var arrName1 = [];
+        for(var i = 0; i < document.getElementById('lbAllValues').length; i++)
+        {
+            arrName1.push(document.getElementById('lbAllValues').options[i].value);
+        }
+        arrName1.sort();
+        document.getElementById("lbAllValues").innerHTML = '';
+        var select = document.getElementById("lbAllValues"); 
+
+        for(var i = 0; i < arrName1.length; i++) {
+            var opt = arrName1[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            select.appendChild(el);
+        }
+    }	//end to the function
+	
+	//start of sortByListValue
+	function sortByListValue() {
+        var listbox = document.getElementById('lbAllValues').innerHTML;
+        document.getElementById('lbAllValues').innerHTML = '';
+		arrValue.sort();
+		for(value in arrValue) {
+			var listbox = document.getElementById('lbAllValues');
+			var newNameValuePair = arrValue[value].split('=');
+			var newOption = document.createElement('option');
+			newOption.value = newNameValuePair[1]+'='+newNameValuePair[0]; // 
+			newOption.innerHTML = newNameValuePair[1]+'='+newNameValuePair[0]; // The displayed text inside of the <option> tags
+			listbox.appendChild(newOption);
+		}
+	}	//end of the function
+	
+	// start of showListXML
+	function showListXML() {
+	
+    var html ='';
+    for(var i = 0; i < document.getElementById('lbAllValues').length; i++)
+    {
+        var s = document.getElementById('lbAllValues').options[i].value.split("=");
+        html+='<'+ s[0] +'>'+s[1]+'</'+ s[0] +'> \r\n';
+    }
+    alert(html);
+}	// end of the function
+	
+</script>
+<!-- end of the JavaScript-->
+
+<meta charset="utf-8"> 
+<title>Test1 Dundas</title>
+</head>
+<body>
+
+	<div class="mainDiv">
+		<header>
+		<h1> Test </h1><br/><br/>
+		</header>
+	<form name="test1">
+	<section>
+		<article>
+		<div class="nameValueClass">
+			 Name/Value Pair<br>
+			<input name = "nameValue" id="txtNameValue" type="text" />
+			<br/>
+			Name/Value Pair List<br>
+			<div class="listDiv" id="listDisplay">
+				<select multiple="multiple" id="lbAllValues" class="lbAllValues">
+				</select>
+			</div>
+			
+			
+		</div>
+		</article>
+	</section>
+	<aside class="buttons">
+		<div>
+			<br/>
+				<input type="button" value="Add Item" onclick="javascript:addNewItem()" />
+			<br/>
+			<br/>
+			<br/>
+				<input type="button" name="sortByName" value="Sort By Name" onclick="javascript:sortByListName();"/>
+			<br/>
+				<input type="button" name="sortByValue" value="Sort By Value" onclick="javascript:sortByListValue();"/>
+			<br/>
+			<br/>
+				<input type="button" value="Remove Item" onclick="javascript:deleteItem()" />
+			<br/>
+			<br/>
+				<input type="button" name="showXML" value="Show XML" onclick="javascript:showListXML()"/>
+		</div>
+	</aside>
+	</form>
+	</div>
+</body>
+</html>
+	
