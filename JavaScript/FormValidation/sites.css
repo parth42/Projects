@@ -1,0 +1,180 @@
+/*------------------------------
+=BASIC SETUP
+------------------------------*/
+body {overflow: scroll; 
+	margin: 0 auto;
+	padding: 10px 0px;
+	width: 1000px;
+        font: 13px/22px Helvetica, sans-serif;
+	background: #F0F0F0;
+        color:#000;
+}
+
+h1   {
+	font-size: 28px;
+	padding: 0px 0px 5px;
+}
+
+/*------------------------------
+=INTRODUCTION
+------------------------------*/
+
+#intro {
+
+        width:1000px;
+        margin: 5px auto; 
+	padding: 5px;    
+}
+
+.introh2 {
+	padding: 0;
+        border:2px solid;
+	color: #336699;
+        background: #99ff00;
+        font-style:italic;
+        text-shadow:0.1em 0.1em 0.05em #fff ;
+}
+
+/*------------------------------
+=CONTENT AREA AND SIDEBAR LAYOUT
+------------------------------*/
+#content {display: table;}
+#mainContent {
+	display: table-cell;
+	width: 700px;
+	padding-right: 22px;
+}
+	
+/*------------------------------
+=SIDEBAR
+------------------------------*/
+aside {
+	display: table-cell;
+       	width: 300px;
+        border:1px solid;
+}
+
+aside section {
+	margin: 2px 0 0 2px;}
+
+
+/*------------------------------
+           Footer
+------------------------------*/
+footer section{text-align:center;width:1000px; }
+
+#lastUpdated {
+	position: relative;
+	margin-top: 26px; 
+	padding: 5px;    
+	background: #ccc;
+        color:#000;
+}
+#lastUpdated p {
+	padding: 0;
+	color: #000;
+        background: #ccc;
+}
+
+/*------------------------------
+=showCase 
+------------------------------*/
+.showContent {display:inline;}
+.hideContent {display:none;}
+
+
+.main
+{
+	width:100%;
+	float:left;
+	position:relative;
+}
+
+.firstLeft
+{
+	position:relative;
+	width:45%;
+	float:left;
+}
+
+.user
+{
+	line-height:24px;
+}
+
+.font
+{
+	color:#0404B4;
+	font-size:15px;
+}
+
+.heading
+{
+	color:#FF0000;
+	font-size:18px;
+}
+
+
+
+.btn
+{
+	text-align:center;
+	padding:10px;	
+	font-size:15px;
+	border-width:1px;
+	border:1px solid;
+	border-radius:18px;
+	background-color:#A4A4A4;
+}
+
+.btn:hover
+{
+	background-color:#D8D8D8;
+/*	font-weight: bold;*/
+	color:#08088A;
+}
+
+.secondLeft
+{
+	position:relative;
+	float:left;
+	width:45%;
+}
+
+.check
+{
+	float:left;
+}
+
+.radio
+{
+	float:right;
+}
+
+.cmnt
+{
+	float:left;
+	margin:15px;
+}
+
+.jspar
+{
+	font-size:18px;
+	color:#FF0000;
+}
+
+aside div#errors
+{
+	margin-bottom:130px;
+}
+#errors
+{
+    float:right;   
+    padding: 2px;
+}
+
+#errors ul
+{
+	list-style-type:upper-roman;
+	margin-left:30px;
+}
